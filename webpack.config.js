@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -17,22 +18,26 @@ module.exports = {
           'css-loader'
         ],
       },
-      {
-        test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ],
+      // {
+      //   test: /.scss$/,
+      //   use: [
+      //     'vue-style-loader',
+      //     'css-loader',
+      //     'sass-loader'
+      //   ],
+      // },
+      { // sass / scss loader for webpack
+        test: /\.(sass|scss)$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       },
-      {
-        test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader?indentedSyntax'
-        ],
-      },
+      // {
+      //   test: /\.sass$/,
+      //   use: [
+      //     'vue-style-loader',
+      //     'css-loader',
+      //     'sass-loader?indentedSyntax'
+      //   ],
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -83,7 +88,13 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new ExtractTextPlugin({ // define where to save the file
+      filename: '[name].bundle.css',
+      allChunks: true,
+    }),
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
