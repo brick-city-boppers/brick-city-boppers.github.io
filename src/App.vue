@@ -21,3 +21,10 @@ export default {
 }
 </script>
 
+<style lang="scss">
+  @import "./scss/variables.scss";
+
+  body {
+    background-color: $accent-color
+  }
+</style>
