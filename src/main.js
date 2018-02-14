@@ -1,45 +1,31 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import mainSass from './scss/main.scss'
-
-// Templetes
-import App from './App.vue';
-import Home from './temps/Home.vue';
-//import Events from './temps/Events.vue';
-// import Nav from './temps/Nav.vue';
-
-// // Components
-// Vue.component('nav', Nav);
-
-let home = Vue.component('home', Home);
-//let events = Vue.component('events', Events);
-
-Vue.use(VueRouter);
-
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-
-const routes = [
-  { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar },
-  //{ path: '/events', component: events},
-  { path: '/', component: home}
-]
+(() => {
 
 
-const router = new VueRouter({
-  routes // short for `routes: routes`
-})
+// var root = null;
+// var useHash = true; // Defaults to: false
+// var hash = '#!'; // Defaults to: '#'
+// var router = new Navigo(root, useHash, hash);
 
-const methods = {}
+//   router.on({
+//   // 'view' is the id of the div element inside which we render the HTML
+//     'firstroute': () => { loadHTML('./templates/test.html', 'view'); },
+//     'secondroute': () => { loadHTML('./templates/second.html', 'view'); },
+//     'thirdroute': () => { loadHTML('./templates/third.html', 'view'); }
+//   })
+//   .resolve();
 
-// 4. Create and mount the root instance.
-// Make sure to inject the router with the router option to make the
-// whole app router-aware.
 
-const app = new Vue({
-  el: document.getElementById('app'),
-  data: methods,
-  router,
-  render: h => h(App)
-})
+// Binds import html files to element ids on the index.html file
+  let links = document.querySelectorAll('link[rel="import"]');
+  links.forEach((link) => {
+    try {
+      let fileName = link.href.match(/.*\/([a-z]*[A-Z]*[0-9]*)\..+$/m)[1];
+      console.log(fileName);
+      let existingEl = document.getElementById(fileName);
+      let templeteEl = link.import.querySelector('section');
+      existingEl.appendChild(templeteEl.cloneNode(true));
+    } catch (e) {
+      throw new Error(`${e}`);
+    }
+  });
+})();
