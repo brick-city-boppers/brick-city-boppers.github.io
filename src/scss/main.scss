@@ -1,7 +1,6 @@
-@import "./variables.scss";
-@import "./home.scss";
+@import "./partials/variables.scss";
+@import "./partials/home.scss";
 
-body {
-    background-color: black;
-    color: black;
+html {
+    background: red;
 }

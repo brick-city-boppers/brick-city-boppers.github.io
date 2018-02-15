@@ -15,12 +15,12 @@
 //   .resolve();
 
 
-// Binds import html files to element ids on the index.html file
+// Binds import html files to element ids in the index.html file
   let links = document.querySelectorAll('link[rel="import"]');
   links.forEach((link) => {
     try {
+      // Matches the name of the href ex: fileName=test in here/is/my/file/test.html
       let fileName = link.href.match(/.*\/([a-z]*[A-Z]*[0-9]*)\..+$/m)[1];
-      console.log(fileName);
       let existingEl = document.getElementById(fileName);
       let templeteEl = link.import.querySelector('section');
       existingEl.appendChild(templeteEl.cloneNode(true));
