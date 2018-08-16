@@ -1,0 +1,53 @@
+{
+  "name": "bcb-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@sanity/client": "^0.132.5",
+    "apollo-cache-inmemory": "^1.2.7",
+    "apollo-client": "^2.3.8",
+    "apollo-link-http": "^1.5.4",
+    "axios": "^0.18.0",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "vue": "^2.5.17",
+    "vue-apollo": "^3.0.0-beta.19",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0",
+    "@vue/cli-plugin-eslint": "^3.0.0",
+    "@vue/cli-service": "^3.0.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
