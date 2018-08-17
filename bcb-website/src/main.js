@@ -1,6 +1,22 @@
+import '@babel/polyfill'
+import '@fortawesome/fontawesome-free/css/all.css'
 import Vue from 'vue'
+import {
+  Vuetify, // required
+  VApp, // required
+  VExpansionPanel,
+  VGrid,
+  VCard,
+  VNavigationDrawer,
+  transitions,
+  VList,
+  VIcon,
+  VFooter
+ } from 'vuetify'
+import 'vuetify/dist/vuetify.min.css';
 import App from './App.vue'
 import router from './router'
+import * as VueGoogleMaps from "vue2-google-maps";
 
 import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
@@ -13,8 +29,32 @@ const GRAPHCMS_API = 'https://api-useast.graphcms.com/v1/cjkvr0bk4024i01bnlo1xs2
 const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: GRAPHCMS_API }),
   cache: new InMemoryCache()
+});
+
+// Vue uses
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyDxSBcGnN4kJAFESqvmG1DzNPi3EvX5p7A",
+    libraries: "places" // necessary for places input
+  }
+});
+
+Vue.use(Vuetify, {
+  components: {
+    VApp,
+    VExpansionPanel,
+    VGrid,
+    VCard,
+    VNavigationDrawer,
+    transitions,
+    VList,
+    VIcon,
+    VFooter
+  },
 })
 
+// Apollo Setup
 Vue.use(VueApollo)
 
 const apolloProvider = new VueApollo({
