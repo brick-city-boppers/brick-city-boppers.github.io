@@ -7,8 +7,8 @@
         <v-layout column class="bcb-section">
           <!-- <img src="@/assets/logo.png" alt="Vuetify.js" class="mb-5"> -->
           <section class="bcb-heading">
-            <v-flex tag="h1" class="text-xs-center display-3 font-weight-medium bcb-home__title bcb-top">Brick City Boppers</v-flex>
-            <v-flex tag="h4" class="text-xs-center subheading font-weight-thin font-italic bcb-home__sub-title">RIT's finest swing dance club. Come learn the styles of Lindy Hop, Charleston, and many more</v-flex>
+            <v-flex tag="h1" class="text-xs-center display-3 font-weight-medium bcb-home__headline bcb-top">The Brick City Boppers</v-flex>
+            <v-flex tag="h4" class="text-xs-center subheading font-weight-thin bcb-home__sub-headline">RIT's finest swing dance club. Come learn the styles of Lindy Hop, Charleston, and many more!</v-flex>
           </section>
           
           <!-- <v-parallax class="bcb-hero" src="heroImage"></v-parallax> -->
@@ -21,7 +21,7 @@
                 <v-expansion-panel-content>
                   <div slot="header">
                     <v-layout row wrap>
-                      <v-flex xs4 tag="h4" class="mt-1 mb-0">Location</v-flex>
+                      <v-flex xs4 tag="h4" class="mt-1 mb-0 bcb-title">Location</v-flex>
                       <v-flex xs8 tag="p" class="mt-1 mb-0">Campus Center 2061</v-flex>
                     </v-layout>
                   </div>
@@ -32,7 +32,7 @@
                   <v-expansion-panel-content readonly class="bcb-hide-icon">
                   <div slot="header">
                     <v-layout row wrap>
-                      <v-flex xs4 tag="h4">Time</v-flex>
+                      <v-flex xs4 tag="h4" class="bcb-title">Time</v-flex>
                       <v-flex xs8 tag="p">8:00pm EST</v-flex>
                     </v-layout>
                   </div>
@@ -43,9 +43,10 @@
               </v-expansion-panel>
           </section>
 
+          <v-flex tag="div" class="bcb-spacer--large"></v-flex>
           
           <v-layout column class="">
-            <!-- Anoucements -->
+            <Anoucements></Anoucements>
           </v-layout>
         </v-layout>
 
@@ -57,12 +58,14 @@
 <script>
 
 import GoogleMap from "@/components/GoogleMap";
+import Anoucements from "@/components/Anoucements";
 import heroImage from "@/assets/showcase/bcb(1).jpg";
 
 export default {
   name: 'Home',
   components: {
-    GoogleMap
+    GoogleMap,
+    Anoucements
   },
   data () {
     return {
@@ -84,70 +87,82 @@ export default {
 
   /* background: radial-gradient(ellipse at bottom, rgba(168,169,224,1) 0%,rgba(33,19,73,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   background: linear-gradient(180deg, #5900BF 0%, #5900BF 1%, #EDE1F0 100%); /* w3c */
-}
 
-.bcb-top {
-  margin-top: 70px;
-}
-.bcb-heading {
-  position: relative;
-  z-index: 10;
-  color: #FFFEFE;
-}
 
-/* .bcb-home__title {
+  .bcb-top {
+    margin-top: 70px;
+  }
+  .bcb-heading {
+    position: relative;
+    z-index: 10;
+    color: #FFFEFE;
+  }
 
-}
+  .bcb-home__headline {
+    font-family: 'Lobster', cursive !important;
+  }
 
-.bcb-home__sub-title {
+  .bcb-home__sub-headline {
+    font-family: "Nunito Sans" !important;
+  }
 
-} */
+  .bcb-hero {
+    position: absolute;
+    z-index: 0;
+    max-height: 600px;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
 
-.bcb-hero {
-  position: absolute;
-  z-index: 0;
-  max-height: 600px;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
+  #weekly-meeting {
+    z-index: 10;
+  }
 
-#weekly-meeting {
-  z-index: 10;
-}
 
-.application .bcb-meeting__header {
-  margin-left: 2.4%;
-  font-family: "Baloo Bhai" !important;
-}
+  .bcb-meeting__header {
+    letter-spacing: 1px !important;
+    font-size: 1.6rem !important;
+  }
 
-/* .bcb-meeting__detials {
-  display: flex;
-  justify-content: left;
-} */
+  .bcb-meeting__detials {
+    font-family: "Lobster" !important;
+    font-size: 1.1rem !important;
+  }
 
-.uppercase {
-  text-transform: uppercase;
-}
+  // .bcb-title {
+  //   font-family: "Nunito Sans" !important;
+  // }
 
-.bcb-container {
-  padding: 5% 5%;
-}
+  /* .bcb-meeting__detials {
+    display: flex;
+    justify-content: left;
+  } */
 
-.bcb-hide-icon i {
-    visibility: hidden;
-}
+  .uppercase {
+    text-transform: uppercase;
+  }
 
-.bcb-spacer--med {
-  height: 40px;
-}
+  .bcb-container {
+    padding: 5% 5%;
+  }
 
-.bcb-spacer--large {
-  height: 100px;
-}
+  .bcb-hide-icon i {
+      visibility: hidden;
+  }
 
-.bcb-section {
-  margin-bottom: 30px;
+  .bcb-spacer--med {
+    height: 40px;
+  }
+
+  .bcb-spacer--large {
+    height: 100px;
+  }
+
+  .bcb-section {
+    margin-bottom: 30px;
+  }
+
 }
 
 </style>

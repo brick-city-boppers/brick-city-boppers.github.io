@@ -13,8 +13,12 @@ import {
   VList,
   VIcon,
   VFooter,
-  VParallax
+  VParallax,
+  VDivider,
+  VDialog,
+  VBtn
  } from 'vuetify'
+ import {Ripple} from 'vuetify/es5/directives';
 import App from './App.vue'
 import router from './router'
 import * as VueGoogleMaps from "vue2-google-maps";
@@ -54,8 +58,14 @@ Vue.use(Vuetify, {
     VList,
     VIcon,
     VFooter,
-    VParallax
+    VParallax,
+    VDivider,
+    VDialog,
+    VBtn
   },
+  directives: {
+    Ripple
+  }
 })
 
 // Apollo Setup
