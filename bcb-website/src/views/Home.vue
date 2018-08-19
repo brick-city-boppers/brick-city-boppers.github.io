@@ -17,12 +17,12 @@
 
           <section id="weekly-meeting">
             <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Weekly Meeting</v-flex>
-              <v-expansion-panel popout class="bcb-meeting__detials">
+              <v-expansion-panel class="bcb-meeting__detials">
                 <v-expansion-panel-content>
                   <div slot="header">
                     <v-layout row wrap>
-                      <v-flex xs4 tag="h4" class="mt-1 mb-0 bcb-title">Location</v-flex>
-                      <v-flex xs8 tag="p" class="mt-1 mb-0">Campus Center 2061</v-flex>
+                      <v-flex xs4 tag="div" class="mt-1 mb-0 bcb-title">Location</v-flex>
+                      <v-flex xs8 tag="p" class="mt-1 mb-0 bcb-text">Campus Center 2061</v-flex>
                     </v-layout>
                   </div>
                   <v-card>
@@ -32,8 +32,8 @@
                   <v-expansion-panel-content readonly class="bcb-hide-icon">
                   <div slot="header">
                     <v-layout row wrap>
-                      <v-flex xs4 tag="h4" class="bcb-title">Time</v-flex>
-                      <v-flex xs8 tag="p">8:00pm EST</v-flex>
+                      <v-flex xs4 tag="div" class="bcb-title">Time</v-flex>
+                      <v-flex xs8 tag="p" class="bcb-text">8:00pm EST</v-flex>
                     </v-layout>
                   </div>
                   <v-card>
@@ -130,9 +130,9 @@ export default {
     font-size: 1.1rem !important;
   }
 
-  // .bcb-title {
-  //   font-family: "Nunito Sans" !important;
-  // }
+  .bcb-text {
+    font-family: "Nunito Sans" !important;
+  }
 
   /* .bcb-meeting__detials {
     display: flex;

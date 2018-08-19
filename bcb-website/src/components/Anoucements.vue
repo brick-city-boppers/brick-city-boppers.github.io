@@ -1,7 +1,7 @@
 <template>
     <v-layout column>
-         <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Anoucements</v-flex>
-        <v-list two-line class="py-0">
+        <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Anoucements</v-flex>
+        <v-list two-line class="py-0 bcb-anoucements">
             <template v-for="(anoucement, index) in anoucements">
                 
                 <v-list-tile
@@ -11,12 +11,10 @@
                     v-on:click="anoucement.dialog = true"
                 >
                     <v-list-tile-content>
-                        <!-- <v-layout align-center justify-space-between row fill-height class="bcb-date-container"> -->
                         <span class="bcb-anoucement__content">
                             <v-list-tile-title v-html="anoucement.title"></v-list-tile-title>
                             <v-list-tile-sub-title class="text-xs-right" v-html="anoucement.date"></v-list-tile-sub-title>
                         </span>
-                        <!-- </v-layout> -->
                         
                         <v-list-tile-sub-title v-html="anoucement.details"></v-list-tile-sub-title>
                     </v-list-tile-content>
@@ -76,6 +74,41 @@ export default {
             date: "8/18/2018",
             dialog: false,
             details: "Do you have Paris recommendations? Have you ever been?"
+          },
+          {
+            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+            title: 'LIRA Choreo Scheduled for Sunday',
+            date: "8/18/2018",
+            dialog: false,
+            details: "Do you have Paris recommendations? Have you ever been?"
+          },
+          {
+            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+            title: 'LIRA Choreo Scheduled for Sunday',
+            date: "8/18/2018",
+            dialog: false,
+            details: "Do you have Paris recommendations? Have you ever been?"
+          },
+          {
+            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+            title: 'LIRA Choreo Scheduled for Sunday',
+            date: "8/18/2018",
+            dialog: false,
+            details: "Do you have Paris recommendations? Have you ever been?"
+          },
+          {
+            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+            title: 'LIRA Choreo Scheduled for Sunday',
+            date: "8/18/2018",
+            dialog: false,
+            details: "Do you have Paris recommendations? Have you ever been?"
+          },
+          {
+            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+            title: 'LIRA Choreo Scheduled for Sunday',
+            date: "8/18/2018",
+            dialog: false,
+            details: "Do you have Paris recommendations? Have you ever been?"
           }
         ]
       }
@@ -96,10 +129,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 
+    .bcb-anoucements {
+        max-height: 270px;
+        overflow: auto;
+    }
+
    .application--wrap {
         .bcb-anoucement__content {
             width: 100%;
             display: flex;
+            font-family: "Lobster" !important;
         }
    } 
 
