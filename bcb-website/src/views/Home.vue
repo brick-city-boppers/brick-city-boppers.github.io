@@ -65,7 +65,8 @@ export default {
         temp: 'test',
         heroImage: heroImage,
         announcements: homePageData,
-        weeklyMeetings: homePageData
+        weeklyMeetings: homePageData,
+        homePageData: ''
       }
   },
   apollo: {

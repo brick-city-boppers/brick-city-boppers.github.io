@@ -1,23 +1,23 @@
 <template>
     <section id="weekly-meeting">
         <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Weekly Meeting</v-flex>
-            <v-expansion-panel class="bcb-meeting__detials">
+            <v-expansion-panel class="bcb-meeting__detials" v-for="(weeklyMeeting, index) in weeklyMeetings" :key='index'>
             <v-expansion-panel-content>
                 <div slot="header">
                 <v-layout row wrap>
                     <v-flex xs4 tag="div" class="mb-0 bcb-title">Location</v-flex>
-                    <v-flex xs8 tag="p" class="mb-0 bcb-text" v-html="weeklyMeetings[0].location"></v-flex>
+                    <v-flex xs8 tag="p" class="mb-0 bcb-text" v-html="weeklyMeeting.location"></v-flex>
                 </v-layout>
                 </div>
                 <v-card>
-                <google-map :lat="parseFloat(weeklyMeetings[0].locationLatitude)" :lng="parseFloat(weeklyMeetings[0].locationLongitude)"/>
+                <google-map :lat="parseFloat(weeklyMeeting.locationLatitude)" :lng="parseFloat(weeklyMeeting.locationLongitude)"/>
                 </v-card>
             </v-expansion-panel-content>
                 <v-expansion-panel-content readonly class="bcb-hide-icon">
                 <div slot="header">
                 <v-layout row wrap>
                     <v-flex xs4 tag="div" class="mb-0 bcb-title">Time</v-flex>
-                    <v-flex xs8 tag="p" class="mb-0 bcb-text">{{`${getMeetingDate(weeklyMeetings[0])} ${weeklyMeetings[0].time}`}}</v-flex>
+                    <v-flex xs8 tag="p" class="mb-0 bcb-text">{{`${getMeetingDate(weeklyMeeting)} ${weeklyMeeting.time}`}}</v-flex>
                 </v-layout>
                 </div>
                 <v-card>
@@ -32,43 +32,24 @@
 //import gql from 'graphql-tag'
 import GoogleMap from "@/components/GoogleMap";
 
-// For testing purposes, helps limit the amount of api requests
-// const weeklyMeetings = [
-//     {
-//         location: "Campus Center Test",
-//         date: "8/19/2018",
-//         time: "10am",
-//         locationLatitude: 0,
-//         locationLongitude: 0
-//     }
-// ];
-
-// const weeklyMeetings = gql`{
-//   weeklyMeetings {
-//     location
-//     time
-//     date
-//     locationLatitude
-//     locationLongitude
-//     updatedAt
-//   }
-// }`;
-
-
 export default {
   name: 'WeeklyMeeting',
-  data () {},
   components: {
-      GoogleMap
+      GoogleMap,
+      weeklyMeetings: [{location: 'temp'}]
   },
-  props: {
-    msg: String,
-    weeklyMeetings: Array,
-    title: null
-  },
+  props: [
+    'msg',
+    'weeklyMeetings',
+    'title'
+  ],
   methods: {
       getMeetingDate(meeting) {
-          return meeting.date.substring(0, meeting.date.indexOf('T'));
+          if (meeting.data !== undefined) {
+            return meeting.date.substring(0, meeting.date.indexOf('T'));
+          }
+
+          return 'Date is unavailable';
       }
   }
 }

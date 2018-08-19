@@ -29,11 +29,6 @@ export default {
     'lat': Number,
     'lng': Number
   },
-  mounted() {
-    //this.geolocate();
-    //this.goTo(this.props.lat, this.props.lng);
-  },
-
   computed: {
     computedLat: {
       get: function () {

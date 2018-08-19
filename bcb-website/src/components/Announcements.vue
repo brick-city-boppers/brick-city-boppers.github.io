@@ -43,23 +43,19 @@
 
 export default {
   name: 'Anoucements',
-  data () {},
-  props: {
-    announcements: Array,
-    msg: String,
-    title: null
-  },
-  computed: {
-    announcementsComputed() {
-       this.announcements.forEach((announcement) => {
-            announcement.dialog = false;
-        });
-      return this.announcements
-    }
-  },
+  props: [
+    'announcements',
+    'msg',
+    'title'
+  ],
+  computed: {},
   methods: {
       getAnoucementDate(announcement) {
-          return announcement.updatedAt.substring(0, announcement.updatedAt.indexOf('T'));
+          if (announcement.updatedAt !== undefined) {
+            return announcement.updatedAt.substring(0, announcement.updatedAt.indexOf('T'));
+          }
+
+          return 'No Date Available';
       }
   }
 }
