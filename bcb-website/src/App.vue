@@ -98,7 +98,7 @@ export default {
   /* background: radial-gradient(ellipse at center, #8C5EFF 0%, #000000 100%); w3c */
 
   /* background: radial-gradient(ellipse at bottom, rgba(168,169,224,1) 0%,rgba(33,19,73,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  background: linear-gradient(180deg, #5900BF 0%, #5900BF 1%, #EDE1F0 100%); /* w3c */
+  //background: linear-gradient(180deg, #5900BF 0%, #5900BF 1%, #EDE1F0 100%); /* w3c */
 
 
   .bcb-top {
@@ -164,6 +164,10 @@ export default {
 
   .bcb-spacer--large {
     height: 100px;
+  }
+
+  .bcb-spacer--huge {
+    height: 300px;
   }
 
   .bcb-section {

@@ -1,7 +1,7 @@
 <template>
     <v-layout column>
         <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Anoucements</v-flex>
-        <v-list two-line class="py-0 bcb-announcements">
+        <v-list two-line class="py-0 bcb-announcements elevation-2">
             <template v-for="(announcement, index) in announcements">
                 
                 <v-list-tile
@@ -65,8 +65,10 @@ export default {
 <style lang="scss">
 
     .bcb-announcements {
+        position: relative;
         max-height: 270px;
         overflow: auto;
+        z-index: 10;
     }
 
    .application--wrap {
