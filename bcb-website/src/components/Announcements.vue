@@ -40,41 +40,15 @@
 </template>
 
 <script>
-//import gql from 'graphql-tag'
-//const Console = console;
-
-
-// For testing, so unnessessary api request are not sent
-const announcements = [];
-
-
-// const announcements = gql`{
-//   announcements {
-//     title
-//     details
-//     updatedAt
-//     dialog
-//   }
-// }`;
-
-
-
 
 export default {
   name: 'Anoucements',
-  data () {
-      return {
-        announcements: announcements
-      }
-    },
+  data () {},
   props: {
+    announcements: Array,
     msg: String,
     title: null
   },
-//   apollo: {
-//       $loadingKey: 'loading',
-//       announcements: announcements
-//   },
   computed: {
     announcementsComputed() {
        this.announcements.forEach((announcement) => {

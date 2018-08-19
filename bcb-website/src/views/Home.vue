@@ -14,13 +14,14 @@
           <!-- <v-parallax class="bcb-hero" src="heroImage"></v-parallax> -->
           
           <v-flex tag="div" class="bcb-spacer--large"></v-flex>
+          <v-flex>{{homePageData}}</v-flex>
 
-          <WeeklyMeeting></WeeklyMeeting>
+          <WeeklyMeeting :weeklyMeetings="weeklyMeetings"></WeeklyMeeting>
 
           <v-flex tag="div" class="bcb-spacer--large"></v-flex>
           
           <v-layout column class="">
-            <Anoucements></Anoucements>
+            <Announcements :announcements="announcements"></Announcements>
           </v-layout>
         </v-layout>
 
@@ -30,22 +31,47 @@
 </template>
 
 <script>
-
-import Anoucements from "@/components/Anoucements";
+import gql from 'graphql-tag';
+import Announcements from "@/components/Announcements";
 import WeeklyMeeting from "@/components/WeeklyMeeting";
 import heroImage from "@/assets/showcase/bcb(1).jpg";
+
+const homePageData = gql`{
+   announcements {
+     title
+     details
+     updatedAt
+     dialog
+   },
+   weeklyMeetings {
+     location
+     time
+     date
+     locationLatitude
+     locationLongitude
+     updatedAt
+   }
+ }`
+
 
 export default {
   name: 'Home',
   components: {
-    Anoucements,
+    Announcements,
     WeeklyMeeting
   },
   data () {
-    return {
-      temp: 'test',
-      heroImage: heroImage
-    }
+      return {
+        temp: 'test',
+        heroImage: heroImage,
+        announcements: homePageData,
+        weeklyMeetings: homePageData
+      }
+  },
+  apollo: {
+      $loadingKey: 'loading',
+      announcements: homePageData,
+      weeklyMeetings: homePageData
   }
 }
 </script>

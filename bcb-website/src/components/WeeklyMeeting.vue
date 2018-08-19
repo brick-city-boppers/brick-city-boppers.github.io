@@ -33,15 +33,15 @@
 import GoogleMap from "@/components/GoogleMap";
 
 // For testing purposes, helps limit the amount of api requests
-const weeklyMeetings = [
-    {
-        location: "Campus Center Test",
-        date: "8/19/2018",
-        time: "10am",
-        locationLatitude: 0,
-        locationLongitude: 0
-    }
-];
+// const weeklyMeetings = [
+//     {
+//         location: "Campus Center Test",
+//         date: "8/19/2018",
+//         time: "10am",
+//         locationLatitude: 0,
+//         locationLongitude: 0
+//     }
+// ];
 
 // const weeklyMeetings = gql`{
 //   weeklyMeetings {
@@ -57,28 +57,20 @@ const weeklyMeetings = [
 
 export default {
   name: 'WeeklyMeeting',
-  data () {
-      return {
-        weeklyMeetings: weeklyMeetings
-      }
-    },
+  data () {},
   components: {
       GoogleMap
   },
   props: {
     msg: String,
+    weeklyMeetings: Array,
     title: null
   },
-//   apollo: {
-//       $loadingKey: 'loading',
-//       weeklyMeetings: weeklyMeetings
-//   },
   methods: {
       getMeetingDate(meeting) {
           return meeting.date.substring(0, meeting.date.indexOf('T'));
       }
   }
-
 }
 </script>
 
