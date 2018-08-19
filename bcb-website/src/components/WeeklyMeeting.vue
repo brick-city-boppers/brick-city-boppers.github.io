@@ -6,18 +6,18 @@
                 <div slot="header">
                 <v-layout row wrap>
                     <v-flex xs4 tag="div" class="mb-0 bcb-title">Location</v-flex>
-                    <v-flex xs8 tag="p" class="mb-0 bcb-text">Campus Center 2061</v-flex>
+                    <v-flex xs8 tag="p" class="mb-0 bcb-text" v-html="weeklyMeetings[0].location"></v-flex>
                 </v-layout>
                 </div>
                 <v-card>
-                <google-map/>
+                <google-map :lat="45.555" :lng="-73.587"/>
                 </v-card>
             </v-expansion-panel-content>
                 <v-expansion-panel-content readonly class="bcb-hide-icon">
                 <div slot="header">
                 <v-layout row wrap>
                     <v-flex xs4 tag="div" class="mb-0 bcb-title">Time</v-flex>
-                    <v-flex xs8 tag="p" class="mb-0 bcb-text">8:00pm EST</v-flex>
+                    <v-flex xs8 tag="p" class="mb-0 bcb-text">{{`${getMeetingDate(weeklyMeetings[0])} ${weeklyMeetings[0].time}`}}</v-flex>
                 </v-layout>
                 </div>
                 <v-card>
@@ -32,11 +32,23 @@
 import gql from 'graphql-tag'
 import GoogleMap from "@/components/GoogleMap";
 
-const announcements = gql`{
-  announcements {
-    title
-    details
-    updatedAt
+// const weeklyMeetings = [
+//     {
+//         location: "Campus Center Test",
+//         date: "8/19/2018",
+//         time: "10am",
+//         locationLatitude: 0,
+//         locationLongitude: 0
+//     }
+// ];
+
+const weeklyMeetings = gql`{
+  weeklyMeetings {
+    location
+    time
+    date
+    locationLatitude
+    locationLongitude
   }
 }`;
 
@@ -45,7 +57,7 @@ export default {
   name: 'WeeklyMeeting',
   data () {
       return {
-        announcements: announcements
+        weeklyMeetings: weeklyMeetings
       }
     },
   components: {
@@ -57,8 +69,14 @@ export default {
   },
   apollo: {
       $loadingKey: 'loading',
-      announcements: announcements
+      weeklyMeetings: weeklyMeetings
   },
+  methods: {
+      getMeetingDate(meeting) {
+          return meeting.date.substring(0, meeting.date.indexOf('T'));
+      }
+  }
+
 }
 </script>
 

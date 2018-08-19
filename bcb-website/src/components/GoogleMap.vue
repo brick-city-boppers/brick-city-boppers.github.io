@@ -1,7 +1,9 @@
 <template>
   <div>
+    <v-flex>Lat: {{computedLat}}</v-flex>
+    <v-flex>Lng: {{computedLng}}</v-flex>
     <gmap-map
-      :center="center"
+      :center="computedCenter"
       :zoom="12"
       style="width:100%;  height: 400px;"
     >
@@ -22,26 +24,78 @@ export default {
     return {
       // default to Montreal to keep it simple
       // change this to whatever makes sense
-      center: { lat: 45.508, lng: -73.587 },
+      //center: { lat: computedLat, lng: computedLng },
       markers: [],
       places: [],
       currentPlace: null
     };
   },
-
+  props: {
+    'lat': Number,
+    'lng': Number
+  },
   mounted() {
     //this.geolocate();
-    this.goTo(41.508, -73.587);
+    //this.goTo(this.props.lat, this.props.lng);
+  },
+
+  computed: {
+    computedLat: {
+      get: function () {
+        let resultLat = this.lat;
+        if (resultLat === undefined || resultLat === null) {
+          resultLat = 45.508; // Default
+        }
+        return resultLat
+      }
+    },
+
+    computedLng: {
+      get: function () {
+        let resultLng = this.lng;
+        if (resultLng === undefined || resultLng === null) {
+          resultLng = -73.587; // Default
+        }
+        return resultLng;
+      }
+    },
+
+    computedCenter: {
+      get: function () {
+        let resultLng = this.lng;
+        let resultLat = this.lat;
+
+        if (resultLat === undefined || resultLat === null) {
+          resultLat = 45.508; // Default
+        }
+        if (resultLng === undefined || resultLng === null) {
+          resultLng = -73.587; // Default
+        }
+
+        return {
+          lat: resultLat,
+          lng: resultLng
+        }
+      }
+    }
   },
 
   methods: {
-
-      goTo(lat = 0, lng = 0) {
+      goTo(lat, lng) {
         this.center = {
           lat: lat,
           lng: lng
         }
-      }
+      },
+      // getLat() {
+        
+      // },
+      // getLng() {
+      //   if (this.lng === undefined || this.lat === null) {
+      //     this.lng = -73.587; // Default
+      //   }
+      //   return this.lng
+      // }
     // receives a place object via the autocomplete component
     // setPlace(place) {
     //   this.currentPlace = place;
