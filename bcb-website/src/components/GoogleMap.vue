@@ -1,17 +1,12 @@
 <template>
   <div>
-    <v-flex>Lat: {{computedLat}}</v-flex>
-    <v-flex>Lng: {{computedLng}}</v-flex>
     <gmap-map
       :center="computedCenter"
-      :zoom="12"
+      :zoom="17"
       style="width:100%;  height: 400px;"
     >
       <gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        @click="center=m.position"
+        :position="computedCenter"
       ></gmap-marker>
     </gmap-map>
   </div>

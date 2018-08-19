@@ -10,7 +10,7 @@
                 </v-layout>
                 </div>
                 <v-card>
-                <google-map :lat="45.555" :lng="-73.587"/>
+                <google-map :lat="parseFloat(weeklyMeetings[0].locationLatitude)" :lng="parseFloat(weeklyMeetings[0].locationLongitude)"/>
                 </v-card>
             </v-expansion-panel-content>
                 <v-expansion-panel-content readonly class="bcb-hide-icon">
@@ -25,32 +25,34 @@
                 </v-card>
             </v-expansion-panel-content>
             </v-expansion-panel>
-        </section>    
+        </section>
 </template>
 
 <script>
-import gql from 'graphql-tag'
+//import gql from 'graphql-tag'
 import GoogleMap from "@/components/GoogleMap";
 
-// const weeklyMeetings = [
-//     {
-//         location: "Campus Center Test",
-//         date: "8/19/2018",
-//         time: "10am",
-//         locationLatitude: 0,
-//         locationLongitude: 0
-//     }
-// ];
+// For testing purposes, helps limit the amount of api requests
+const weeklyMeetings = [
+    {
+        location: "Campus Center Test",
+        date: "8/19/2018",
+        time: "10am",
+        locationLatitude: 0,
+        locationLongitude: 0
+    }
+];
 
-const weeklyMeetings = gql`{
-  weeklyMeetings {
-    location
-    time
-    date
-    locationLatitude
-    locationLongitude
-  }
-}`;
+// const weeklyMeetings = gql`{
+//   weeklyMeetings {
+//     location
+//     time
+//     date
+//     locationLatitude
+//     locationLongitude
+//     updatedAt
+//   }
+// }`;
 
 
 export default {
@@ -67,10 +69,10 @@ export default {
     msg: String,
     title: null
   },
-  apollo: {
-      $loadingKey: 'loading',
-      weeklyMeetings: weeklyMeetings
-  },
+//   apollo: {
+//       $loadingKey: 'loading',
+//       weeklyMeetings: weeklyMeetings
+//   },
   methods: {
       getMeetingDate(meeting) {
           return meeting.date.substring(0, meeting.date.indexOf('T'));
