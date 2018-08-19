@@ -1,34 +1,34 @@
 <template>
     <v-layout column>
         <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Anoucements</v-flex>
-        <v-list two-line class="py-0 bcb-anoucements">
-            <template v-for="(anoucement, index) in anoucements">
+        <v-list two-line class="py-0 bcb-announcements">
+            <template v-for="(announcement, index) in announcements">
                 
                 <v-list-tile
                     
                     :key="index"
                     ripple
-                    v-on:click="anoucement.dialog = true"
+                    v-on:click="announcement.dialog = true"
                 >
                     <v-list-tile-content>
-                        <span class="bcb-anoucement__content">
-                            <v-list-tile-title v-html="anoucement.title"></v-list-tile-title>
-                            <v-list-tile-sub-title class="text-xs-right" v-html="anoucement.date"></v-list-tile-sub-title>
+                        <span class="bcb-announcement__title-date">
+                            <v-list-tile-title v-html="announcement.title"></v-list-tile-title>
+                            <v-list-tile-sub-title class="text-xs-right" v-html="getAnoucementDate(announcement)"></v-list-tile-sub-title>
                         </span>
                         
-                        <v-list-tile-sub-title v-html="anoucement.details"></v-list-tile-sub-title>
+                        <v-list-tile-sub-title class="bcb-announcement__details" v-html="announcement.details"></v-list-tile-sub-title>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-divider v-if="index + 1 < anoucements.length" :key="`divider-${index}`"></v-divider>
+                <v-divider v-if="index + 1 < announcements.length" :key="`divider-${index}`"></v-divider>
 
                 <v-layout row justify-center` v-bind:key="`dialog-${index}`">
-                    <v-dialog v-model="anoucement.dialog" max-width="290">
+                    <v-dialog v-model="announcement.dialog" max-width="290">
                     <v-card>
-                        <v-card-title class="headline" v-html="anoucement.title"></v-card-title>
-                        <v-card-text  v-html="anoucement.details"></v-card-text>
+                        <v-card-title class="headline" v-html="announcement.title"></v-card-title>
+                        <v-card-text  v-html="announcement.details"></v-card-text>
                         <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="green darken-1" flat @click.native="anoucement.dialog = false">Close</v-btn>
+                        <v-btn color="green darken-1" flat @click.native="announcement.dialog = false">Close</v-btn>
                         </v-card-actions>
                     </v-card>
                     </v-dialog>
@@ -43,74 +43,23 @@
 import gql from 'graphql-tag'
 //const Console = console;
 
-const title = gql`{
-  homePages {
+const announcements = gql`{
+  announcements {
     title
+    details
+    updatedAt
+    dialog
   }
 }`;
+
+
+
 
 export default {
   name: 'Anoucements',
   data () {
       return {
-        anoucements: [
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-            title: 'Anoucement 1',
-            date: "8/18/2018",
-            dialog: false,
-            details: "The best time ever kjdf a;dld afjdk;ad fkdjfk dfeiofeil dfjd fioewoe fld fe fefsd fkje ofef ef ldjfeopf dfjfejffe f  jdkfjfldkf skdf sklf sdf sd dsfk  "
-          },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-            title: 'Summer BBQ',
-            date: "8/18/2018",
-            dialog: false,
-            details: " Wish I could come, but I'm out of town this weekend."
-          },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-            title: 'LIRA Choreo Scheduled for Sunday',
-            date: "8/18/2018",
-            dialog: false,
-            details: "Do you have Paris recommendations? Have you ever been?"
-          },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-            title: 'LIRA Choreo Scheduled for Sunday',
-            date: "8/18/2018",
-            dialog: false,
-            details: "Do you have Paris recommendations? Have you ever been?"
-          },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-            title: 'LIRA Choreo Scheduled for Sunday',
-            date: "8/18/2018",
-            dialog: false,
-            details: "Do you have Paris recommendations? Have you ever been?"
-          },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-            title: 'LIRA Choreo Scheduled for Sunday',
-            date: "8/18/2018",
-            dialog: false,
-            details: "Do you have Paris recommendations? Have you ever been?"
-          },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-            title: 'LIRA Choreo Scheduled for Sunday',
-            date: "8/18/2018",
-            dialog: false,
-            details: "Do you have Paris recommendations? Have you ever been?"
-          },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-            title: 'LIRA Choreo Scheduled for Sunday',
-            date: "8/18/2018",
-            dialog: false,
-            details: "Do you have Paris recommendations? Have you ever been?"
-          }
-        ]
+        announcements: announcements
       }
     },
   props: {
@@ -119,9 +68,20 @@ export default {
   },
   apollo: {
       $loadingKey: 'loading',
-      homePages: {
-        query: title
-      },
+      announcements: announcements
+  },
+  computed: {
+    announcementsComputed() {
+       this.announcements.forEach((announcement) => {
+            announcement.dialog = false;
+        });
+      return this.announcements
+    }
+  },
+  methods: {
+      getAnoucementDate(announcement) {
+          return announcement.updatedAt.substring(0, announcement.updatedAt.indexOf('T'));
+      }
   }
 }
 </script>
@@ -129,13 +89,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 
-    .bcb-anoucements {
+    .bcb-announcements {
         max-height: 270px;
         overflow: auto;
     }
 
    .application--wrap {
-        .bcb-anoucement__content {
+        .bcb-announcement__title-date {
             width: 100%;
             display: flex;
             font-family: "Lobster" !important;

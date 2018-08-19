@@ -87,3 +87,89 @@ export default {
   }
 }
 </script>
+
+
+<style lang='scss'>
+
+.application--wrap {
+  /* background: -moz-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); /* ff3.6+ */
+  /* background: -webkit-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); safari5.1+,chrome10+ */
+  /* background: -o-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); opera 11.10+ */
+  /* background: radial-gradient(ellipse at center, #8C5EFF 0%, #000000 100%); w3c */
+
+  /* background: radial-gradient(ellipse at bottom, rgba(168,169,224,1) 0%,rgba(33,19,73,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: linear-gradient(180deg, #5900BF 0%, #5900BF 1%, #EDE1F0 100%); /* w3c */
+
+
+  .bcb-top {
+    margin-top: 70px;
+  }
+  .bcb-heading {
+    position: relative;
+    z-index: 10;
+    color: #FFFEFE;
+  }
+
+  .bcb-home__headline {
+    font-family: 'Lobster', cursive !important;
+  }
+
+  .bcb-home__sub-headline {
+    font-family: "Nunito Sans" !important;
+  }
+
+  .bcb-hero {
+    position: absolute;
+    z-index: 0;
+    max-height: 600px;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .bcb-meeting__header {
+    letter-spacing: 1px !important;
+    font-size: 1.6rem !important;
+  }
+
+  .bcb-meeting__detials {
+    font-family: "Lobster" !important;
+    font-size: 1.1rem !important;
+  }
+
+  .bcb-text {
+    font-family: "Roboto" !important;
+  }
+
+  /* .bcb-meeting__detials {
+    display: flex;
+    justify-content: left;
+  } */
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .bcb-container {
+    padding: 5% 5%;
+  }
+
+  .bcb-hide-icon i {
+      visibility: hidden;
+  }
+
+  .bcb-spacer--med {
+    height: 40px;
+  }
+
+  .bcb-spacer--large {
+    height: 100px;
+  }
+
+  .bcb-section {
+    margin-bottom: 30px;
+  }
+
+}
+
+</style>
