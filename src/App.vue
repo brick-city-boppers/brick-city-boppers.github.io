@@ -3,15 +3,15 @@
     <v-toolbar dark color="#5B3A8B">
 
     <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
-      <v-icon small class="mr-2">fas fa-home</v-icon>Home
+      <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-home</v-icon>Home</v-flex>
     </v-btn>
 
     <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
-      <v-icon small class="mr-2">fas fa-image</v-icon>Gallery
+      <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-image</v-icon>Gallery</v-flex>
     </v-btn>
 
     <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
-      <v-icon small class="mr-2">fas fa-atlas</v-icon>The Club
+      <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-atlas</v-icon>The Club</v-flex>
     </v-btn>
 
     <!-- <v-toolbar-title class="white--text">{{title}}</v-toolbar-title> -->
@@ -105,6 +105,26 @@ export default {
   }
 }
 
+@keyframes header-load {
+    0% {
+        //opacity: 0;
+        .bcb-header {
+            transform: rotateX(180deg);
+        } 
+    }
+
+    100% {
+        //opacity: 1;
+        .bcb-meeting__header {
+          transform: rotateX(0deg);
+        }
+    }
+}
+
+
+// Delays
+$bcb-header-delay: 1s;
+
 #bcb-app {
   /* background: -moz-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); /* ff3.6+ */
   /* background: -webkit-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); safari5.1+,chrome10+ */
@@ -112,7 +132,7 @@ export default {
   /* background: radial-gradient(ellipse at center, #8C5EFF 0%, #000000 100%); w3c */
 
   /* background: radial-gradient(ellipse at bottom, rgba(168,169,224,1) 0%,rgba(33,19,73,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  background: linear-gradient(180deg,black, cyan, violet, orange); /* w3c */
+  //background: linear-gradient(180deg,black, cyan, violet, orange); /* w3c */
   height: 100%;
 
 
@@ -147,9 +167,12 @@ export default {
     animation-timing-function: ease;
   }
 
+  
   .bcb-nav__item {
-      &:hover {
+    &:hover {
+      .bcb-nav__item-content {
         color: violet;
+      }
     }
   }
 
@@ -163,6 +186,7 @@ export default {
         color: aqua;
       }
     }
+  
 
     &:hover.bcb-icon--instagram {
       svg {
@@ -186,10 +210,15 @@ export default {
     left: 0;
   }
 
-  .bcb-meeting__header {
+  .bcb-header {
     letter-spacing: 1px !important;
     font-size: 1.8rem !important;
     color: #FFFEFE;
+    animation: header-load 1s;
+    transform-origin: top;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
   }
 
   .bcb-meeting__detials {
@@ -244,10 +273,24 @@ export default {
 
 }
 
+@media screen and (min-width: 40rem) {
+  #bcb-app {
+    .v-dialog {
+      max-width: 400px;
+    }
+  }
+}
+
 @media screen and (min-width: 80rem) {
   .application--wrap {
     .bcb-container {
       padding: 5% 0%;
+    }
+  }
+
+  #bcb-app {
+    .v-dialog {
+      max-width: 500px;
     }
   }
 }

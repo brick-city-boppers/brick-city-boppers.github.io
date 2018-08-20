@@ -6,10 +6,55 @@
       
         <v-layout column class="bcb-section">
           <v-flex class="bcb-home__image-hero-container">
+            <v-flex class="bcb-footer__background-fill"></v-flex>
+
+
             <!-- <v-parallax height="1000" class="bcb-home__image-hero--1 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1_VJgka1O4ohGmcDHpsa1a4KZSDEq87jh" alt="Hero Image"></v-parallax> -->
             <img class="bcb-home__image-hero--2 bcb-home__image-hero rellax dark-overlay" src="https://drive.google.com/uc?export=view&id=1pywqlVkrOnxeuKrZtFG0o1OwJMbdSMEf" alt="Hero Image">
-            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image">
-            <img class="bcb-home__image-hero--4 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image">
+            <!-- <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image"> -->
+            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://hdqwalls.com/download/black-gradient-b9-1920x1080.jpg" alt="Hero Image">
+            <img class="bcb-home__image-hero--4 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image"> 
+          
+            <v-flex class="bcb-home__footer">
+              <v-layout column align-center>
+                <v-flex class="bcb-spacer--med"></v-flex>
+
+                <v-flex sm-10 md-3 lg-3>
+                  <v-form>
+                    <v-flex class="bcb-footer__sign-up"><span class="bcb-footer__sign-up--important">Sign up</span> for our weekly newsletter!</v-flex>
+                    <v-layout row>
+                      <v-text-field clearable="bcb-footer__sign-up-input"
+                        background-color="white"
+                        label="Sign Up with Email"
+                        solo
+                        v-validate="'required|email'"
+                        v-model="email"
+                      ></v-text-field>
+
+                      <v-btn class="bcb-footer__sign-up-button">
+                        <v-icon>fas fa-arrow-right</v-icon>
+                      </v-btn>
+                    </v-layout>
+                    
+
+
+                    <v-flex class="bcb-footer__sign-up-field"></v-flex>
+                  </v-form>
+                </v-flex>
+
+                <v-flex class="bcb-spacer--med"></v-flex>
+                
+                <v-flex class="bcb-header">Contact Us</v-flex>
+                <v-flex>
+                  <v-icon>fas fa-email</v-icon>
+                  <v-flex>bcbswing@gmail.com</v-flex>
+                </v-flex>
+                <v-flex>
+                  <v-icon>fas fa-phone</v-icon>
+                  <v-flex>?</v-flex>
+                </v-flex>
+              </v-layout>
+            </v-flex>
           </v-flex>
 
 
@@ -33,7 +78,11 @@
 
         <!-- <div id='calendar'></div> -->
 
+
       </v-layout>
+      
+      <!-- <v-flex class="bcb-footer__background-fill"></v-flex> -->
+    
     </v-slide-y-transition>
   </v-container>
 </template>
@@ -59,6 +108,7 @@ let homePageData = gql`{
      date
      locationLatitude
      locationLongitude
+     details
      updatedAt
    }
  }`
@@ -76,7 +126,8 @@ export default {
         heroImage: heroImage,
         announcements: homePageData,
         weeklyMeetings: homePageData,
-        homePageData: ''
+        homePageData: '',
+        email: ''
       }
   },
   mounted() {
@@ -118,21 +169,37 @@ export default {
     }
 }
 
-// A CSS Gradient Overlay
-// .gradient-overlay {
-//   padding: 0;
-//   height: 100%;
-//   position: relative;
-//   z-index: 2;
-//   height:350px;
-//   text-align: center;
-//   background-size: cover;
-//   @include dark-overlay;
-// }
-// .gradient-overlay:after {
-//   width: 100%;
-//   background: linear-gradient(to bottom,  rgba(0, 0, 0, 0.1) 0%,rgba(255, 0, 0, 0.05) 100%); /* W3C */
-// }
+#bcb-app {
+
+  .bcb-home__footer {
+    height: 355px;
+    background-color: #272727;
+    color: #FEFEFE;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    .bcb-footer__sign-up--important {
+      color: orange;
+    }
+
+    .bcb-footer__sign-up-button {
+      background-color: orange;
+      color: #FEFEFE;
+      position: relative;
+      margin: 0 !important;
+      /* display: block; */
+      /* padding: 13px 5px; */
+      height: 48px;
+      border-radius: 0 10px 10px 0px;
+      left: -2px;
+    }
+
+    .bcb-footer__sign-up-input {
+      border-radius: 10px 0px 0px 10px;
+    }
+  }
+}
 
 .application--wrap {
   height: 2000px;
@@ -142,6 +209,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 3;
 
   .bcb-home__image-hero {
     position: relative;
@@ -150,6 +218,19 @@ export default {
     height: 800px;
     object-fit: cover;
     left: 0;
+    opacity: 0;
+    animation: load-fade 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+  }
+
+  .bcb-footer__background-fill {
+    background-color: rgb(49, 49, 49);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    background: linear-gradient(180deg, black, cyan, cyan, violet, violet, yellow); /* w3c */
   }
 
   // .bcb-home__image-hero--1 {

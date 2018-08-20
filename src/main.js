@@ -21,7 +21,9 @@ import {
   VDivider,
   VDialog,
   VBtn,
-  VToolbar
+  VToolbar,
+  VForm,
+  VTextField
  } from 'vuetify'
  import {Ripple} from 'vuetify/es5/directives';
 import App from './App.vue'
@@ -67,7 +69,9 @@ Vue.use(Vuetify, {
     VDivider,
     VDialog,
     VBtn,
-    VToolbar
+    VToolbar,
+    VForm,
+    VTextField
   },
   directives: {
     Ripple
