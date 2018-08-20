@@ -1,9 +1,9 @@
 <template>
-    <section class="bcb-announcements__wrapper">
+    <section class="bcb-announcements__wrapper bcb-spacer__margin--large">
         <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Anoucements</v-flex>
         <v-list two-line class="py-0 bcb-announcements elevation-5">
 
-            <template v-if="announcementDialogs.length > 0" v-for="(announcement, index) in announcements">
+            <template  v-for="(announcement, index) in announcements">
                 
                 <v-list-tile
                     
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'Announcement',
   data: function() {
@@ -57,11 +58,6 @@ export default {
     'title': String
   },
   computed: {},
-//   watch: {
-//       annoucements: function(newVal) {
-//           this.announcementDialogs = this.initAnnouncementDialogs(newVal);
-//       }
-//   },
   methods: {
       getAnoucementDate(announcement) {
           if (announcement.updatedAt !== undefined) {
@@ -70,11 +66,10 @@ export default {
 
           return '';
       },
-      initAnnouncementDialogs() {
-          
+      initAnnouncementDialogs() {          
           let dialogs = [];
-          for(let a of this.announcements) {
-              dialogs.push({dialog: a === undefined});
+          for(let i=0; i<1000; i++) {
+              dialogs.push({dialog: false});
           }
           return dialogs;
       }

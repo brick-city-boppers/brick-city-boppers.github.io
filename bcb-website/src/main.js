@@ -2,6 +2,9 @@ import '@babel/polyfill'
 import '@fortawesome/fontawesome-free/js/fontawesome.min'
 import '@fortawesome/fontawesome-free/js/solid.min'
 import '@fortawesome/fontawesome-free/js/brands.min'
+import 'fullcalendar/dist/fullcalendar.min.js';
+import 'fullcalendar/dist/fullcalendar.min.css';
+
 import Vue from 'vue'
 import {
   Vuetify, // required

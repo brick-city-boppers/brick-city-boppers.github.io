@@ -2,12 +2,16 @@
   <v-app id="bcb-app">
     <v-toolbar dark color="#5B3A8B">
 
-    <v-btn flat>
+    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
       <v-icon small class="mr-2">fas fa-home</v-icon>Home
     </v-btn>
 
-    <v-btn flat>
+    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
       <v-icon small class="mr-2">fas fa-image</v-icon>Gallery
+    </v-btn>
+
+    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
+      <v-icon small class="mr-2">fas fa-atlas</v-icon>The Club
     </v-btn>
 
     <!-- <v-toolbar-title class="white--text">{{title}}</v-toolbar-title> -->
@@ -71,6 +75,36 @@ export default {
 
 <style lang='scss'>
 
+@keyframes load-fade-transform {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px)
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes load-fade {
+  0% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 #bcb-app {
   /* background: -moz-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); /* ff3.6+ */
   /* background: -webkit-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); safari5.1+,chrome10+ */
@@ -78,7 +112,8 @@ export default {
   /* background: radial-gradient(ellipse at center, #8C5EFF 0%, #000000 100%); w3c */
 
   /* background: radial-gradient(ellipse at bottom, rgba(168,169,224,1) 0%,rgba(33,19,73,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  background: linear-gradient(180deg, rgb(14, 225, 240) 100%, rgb(217, 183, 255) 80%, rgb(248, 96, 85) 80%); /* w3c */
+  background: linear-gradient(180deg,black, cyan, violet, orange); /* w3c */
+  height: 100%;
 
 
   .bcb-top {
@@ -90,13 +125,32 @@ export default {
     color: #FFFEFE;
   }
 
+
   .bcb-home__headline {
     font-family: 'Lobster', cursive !important;
+    transition: all;
+    opacity: 0;
+    animation: load-fade-transform 1s;
+    transform-origin: top;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
   }
 
   .bcb-home__sub-headline {
     font-family: "Roboto" !important;
     font-weight: 400 !important;
+    opacity: 0;
+    animation: load-fade 0.5s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+  }
+
+  .bcb-nav__item {
+      &:hover {
+        color: violet;
+    }
   }
 
   .bcb-icon {

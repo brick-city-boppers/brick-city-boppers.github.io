@@ -6,10 +6,10 @@
       
         <v-layout column class="bcb-section">
           <v-flex class="bcb-home__image-hero-container">
-            <!-- <v-parallax height="1000" class="bcb-home__image-hero--1 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image"></v-parallax> -->
+            <!-- <v-parallax height="1000" class="bcb-home__image-hero--1 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1_VJgka1O4ohGmcDHpsa1a4KZSDEq87jh" alt="Hero Image"></v-parallax> -->
             <img class="bcb-home__image-hero--2 bcb-home__image-hero rellax dark-overlay" src="https://drive.google.com/uc?export=view&id=1pywqlVkrOnxeuKrZtFG0o1OwJMbdSMEf" alt="Hero Image">
-            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1_VJgka1O4ohGmcDHpsa1a4KZSDEq87jh" alt="Hero Image">
-            <!-- <img class="bcb-home__image-hero--4" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image"> -->
+            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image">
+            <img class="bcb-home__image-hero--4 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image">
           </v-flex>
 
 
@@ -31,6 +31,8 @@
           </v-layout>
         </v-layout>
 
+        <!-- <div id='calendar'></div> -->
+
       </v-layout>
     </v-slide-y-transition>
   </v-container>
@@ -41,6 +43,8 @@ import gql from 'graphql-tag';
 import Announcements from "@/components/Announcements";
 import WeeklyMeeting from "@/components/WeeklyMeeting";
 import heroImage from "@/assets/showcase/bcb(1).jpg";
+
+import $ from 'jquery';
 
 let homePageData = gql`{
    announcements {
@@ -75,6 +79,11 @@ export default {
         homePageData: ''
       }
   },
+  mounted() {
+    $('#calendar').fullCalendar({
+    // put your options and callbacks here
+    })
+  },
   apollo: {
       $loadingKey: 'loading',
       announcements: homePageData,
@@ -85,6 +94,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
+
+
+#calendar {
+  position: relative;
+  z-index: 10;
+}
 
 .dark-overlay {
     &:after {
@@ -127,12 +142,12 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 1000px;
 
   .bcb-home__image-hero {
-    position: absolute;
+    position: relative;
     width: 100%;
     max-height: 1000px;
+    height: 800px;
     object-fit: cover;
     left: 0;
   }
@@ -149,9 +164,27 @@ export default {
   }
 
   .bcb-home__image-hero--3 {
+    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 80%);
+    //object-position: 400px 0px;
+    top: -225px;
+  }
+
+  .bcb-home__image-hero--4 {
+    clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 100%);
+    //object-position: 400px 0px;
+    top: -370px;
+  }
+
+  .bcb-home__image-hero--5 {
     clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
     //object-position: 400px 0px;
-    top: 68%;
+    top: -200px;
+  }
+
+  .bcb-home__image-hero--6 {
+    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
+    //object-position: 400px 0px;
+    top: -200px;
   }
 }
 
