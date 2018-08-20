@@ -50,7 +50,7 @@
                     <v-flex tag="div">bcbswing@gmail.com</v-flex>
                   </v-layout>
 
-                  <v-layout row justify-space-between class="bcb-footer__contact-phone">
+                  <v-layout row justify-space-between class="bcb-footer__contact-phone" @click="copy">
                     <v-icon small>fas fa-phone-square</v-icon>
                     <v-flex tag="div">TBA</v-flex>
                   </v-layout>
@@ -150,11 +150,22 @@ export default {
   },
   methods: {
     copy: (event) => {
-      Console.log(event);
-      let a = $(event.target);
-      Console.log(a)
-      a.select();
+      let range = undefined;
+      if (document.selection) { // IE
+          range = document.body.createTextRange();
+          range.moveToElementText($(event.target)[0]);
+          range.select();
+      } else if (window.getSelection) {
+          range = document.createRange();
+          range.selectNode($(event.target)[0]);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+      }
+
       document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      
+      Console.log($(event.target)[0]);
     }
   }
 }
