@@ -54,6 +54,14 @@
                     <v-icon small>fas fa-phone-square</v-icon>
                     <v-flex tag="div">TBA</v-flex>
                   </v-layout>
+
+                  <v-alert class="bcb-alert"
+                    :value="copied"
+                    transition="slide-y-reverse-transition"
+                    type="success"
+                  >
+                    Copied
+                  </v-alert>
                 </v-flex>
               </v-flex>
             </v-flex>
@@ -95,8 +103,6 @@ import Announcements from "@/components/Announcements";
 import WeeklyMeeting from "@/components/WeeklyMeeting";
 import heroImage from "@/assets/showcase/bcb(1).jpg";
 
-let Console = console;
-
 import $ from 'jquery';
 
 let homePageData = gql`{
@@ -132,6 +138,7 @@ export default {
         weeklyMeetings: homePageData,
         homePageData: '',
         email: '',
+        copied: false,
         emailRules: [
           v => !!v || '',
           v => /.+@.+/.test(v) || 'E-mail must be valid'
@@ -149,7 +156,16 @@ export default {
       weeklyMeetings: homePageData
   },
   methods: {
-    copy: (event) => {
+    
+    // Adds then removes the copy alert after a certain amount of time
+    triggerCopied: function() {
+      this.copied = true;
+      setTimeout(() => {
+        this.copied = false;
+      }, 1000);
+    },
+
+    copy: function(event) {
       let range = undefined;
       if (document.selection) { // IE
           range = document.body.createTextRange();
@@ -164,8 +180,8 @@ export default {
 
       document.execCommand('copy');
       window.getSelection().removeAllRanges();
-      
-      Console.log($(event.target)[0]);
+
+      this.triggerCopied();   
     }
   }
 }

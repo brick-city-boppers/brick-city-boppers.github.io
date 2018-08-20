@@ -23,7 +23,8 @@ import {
   VBtn,
   VToolbar,
   VForm,
-  VTextField
+  VTextField,
+  VAlert
  } from 'vuetify'
  import {Ripple} from 'vuetify/es5/directives';
 
@@ -74,7 +75,8 @@ Vue.use(Vuetify, {
     VBtn,
     VToolbar,
     VForm,
-    VTextField
+    VTextField,
+    VAlert
   },
   directives: {
     Ripple

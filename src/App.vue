@@ -135,10 +135,14 @@ $bcb-header-delay: 1s;
   //background: linear-gradient(180deg,black, cyan, violet, orange); /* w3c */
   height: 100%;
 
+  .bcb-alert {
+    border-radius: 10px;
+  }
 
   .bcb-top {
     margin-top: 70px;
   }
+
   .bcb-heading {
     position: relative;
     z-index: 10;
