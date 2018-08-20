@@ -5,10 +5,10 @@
 
       
         <v-layout column class="bcb-section">
-          <v-flex class="bcb-home__image-hero-container gradient-overlay">
+          <v-flex class="bcb-home__image-hero-container">
             <!-- <v-parallax height="1000" class="bcb-home__image-hero--1 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image"></v-parallax> -->
-            <v-parallax height="1000" class="bcb-home__image-hero--2 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1pywqlVkrOnxeuKrZtFG0o1OwJMbdSMEf" alt="Hero Image"></v-parallax>
-            <v-parallax height="1000" class="bcb-home__image-hero--3 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1_VJgka1O4ohGmcDHpsa1a4KZSDEq87jh" alt="Hero Image"></v-parallax>
+            <img class="bcb-home__image-hero--2 bcb-home__image-hero rellax dark-overlay" src="https://drive.google.com/uc?export=view&id=1pywqlVkrOnxeuKrZtFG0o1OwJMbdSMEf" alt="Hero Image">
+            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1_VJgka1O4ohGmcDHpsa1a4KZSDEq87jh" alt="Hero Image">
             <!-- <img class="bcb-home__image-hero--4" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image"> -->
           </v-flex>
 
@@ -21,13 +21,12 @@
           <!-- <v-parallax class="bcb-hero" src="heroImage"></v-parallax> -->
           
           <v-flex tag="div" class="bcb-spacer--huge"></v-flex>
-          <v-flex>{{homePageData}}</v-flex>
 
-          <WeeklyMeeting :weeklyMeetings="weeklyMeetings"></WeeklyMeeting>
-
-          <v-flex tag="div" class="bcb-spacer--large"></v-flex>
           
-          <v-layout column class="">
+          
+          <v-layout justify-space-around row wrap>
+            <WeeklyMeeting :weeklyMeetings="weeklyMeetings"></WeeklyMeeting>
+            <!-- <v-flex tag="div" class="bcb-spacer--large"></v-flex> -->
             <Announcements :announcements="announcements"></Announcements>
           </v-layout>
         </v-layout>
@@ -87,13 +86,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
 
-@mixin dark-overlay {
+.dark-overlay {
     &:after {
         content: "";
         width: 50%;
         height: auto;
         position: absolute;
-        z-index: 1; 
+        z-index: 1;
+        width: 100%;
+        background: linear-gradient(to bottom,  rgba(0, 0, 0, 0.1) 0%,rgba(255, 0, 0, 0.05) 100%); /* W3C */
     // Take note of this negative z-index and copare to each article's positive z-index. This helps your content to show up over the overlay.
      top: 0;
         right: 0;
@@ -103,20 +104,20 @@ export default {
 }
 
 // A CSS Gradient Overlay
-.gradient-overlay {
-  padding: 0;
-  height: 100%;
-  position: relative;
-  z-index: 2;
-  height:350px;
-  text-align: center;
-  background-size: cover;
-  @include dark-overlay;
-}
-.gradient-overlay:after {
-  width: 100%;
-  background: linear-gradient(to bottom,  rgba(0, 0, 0, 0.1) 0%,rgba(255, 0, 0, 0.05) 100%); /* W3C */
-}
+// .gradient-overlay {
+//   padding: 0;
+//   height: 100%;
+//   position: relative;
+//   z-index: 2;
+//   height:350px;
+//   text-align: center;
+//   background-size: cover;
+//   @include dark-overlay;
+// }
+// .gradient-overlay:after {
+//   width: 100%;
+//   background: linear-gradient(to bottom,  rgba(0, 0, 0, 0.1) 0%,rgba(255, 0, 0, 0.05) 100%); /* W3C */
+// }
 
 .application--wrap {
   height: 2000px;
@@ -133,6 +134,7 @@ export default {
     width: 100%;
     max-height: 1000px;
     object-fit: cover;
+    left: 0;
   }
 
   // .bcb-home__image-hero--1 {
@@ -142,18 +144,14 @@ export default {
   // }
 
   .bcb-home__image-hero--2 {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 0% 90%, 0% 100%);
-    object-position: 50px 0px;
-
-    img {
-      transform: translate(-45%, 178px);
-    }
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%, 0% 100%);
+    //object-position: 50px 0px;
   }
 
   .bcb-home__image-hero--3 {
     clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
-    object-position: 250px 0px;
-    top: 60%;
+    //object-position: 400px 0px;
+    top: 68%;
   }
 }
 

@@ -1,72 +1,41 @@
 <template>
-  <v-app>
-    <!-- <v-navigation-drawer
-      persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      enable-resize-watcher
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer> -->
-    <!-- <v-toolbar
-      app
-      :clipped-left="clipped"
-    >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>menu</v-icon>
-      </v-btn>
-    </v-toolbar> -->
-    <v-content>
-      <router-view/>
-    </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
+  <v-app id="bcb-app">
+    <v-toolbar dark color="#5B3A8B">
+
+    <v-btn flat>
+      <v-icon small class="mr-2">fas fa-home</v-icon>Home
+    </v-btn>
+
+    <v-btn flat>
+      <v-icon small class="mr-2">fas fa-image</v-icon>Gallery
+    </v-btn>
+
+    <!-- <v-toolbar-title class="white--text">{{title}}</v-toolbar-title> -->
+
+    <v-spacer></v-spacer>
+
+    <v-btn flat icon class="bcb-icon bcb-icon--facebook" href="https://www.facebook.com/groups/BrickCityBoppers/">
+      <v-icon>fab fa-facebook-f</v-icon>
+    </v-btn>
+
+    <v-btn flat icon class="bcb-icon bcb-icon--instagram" href="https://www.instagram.com/bcbswing/">
+      <v-icon>fab fa-instagram</v-icon>
+    </v-btn>
+
+    <v-btn flat icon class="bcb-icon bcb-icon--youtube" href="https://www.youtube.com/channel/UCmSuXLCCKfpRHFPvsdtRrVA">
+      <v-icon>fab fa-youtube</v-icon>
+    </v-btn>
+  </v-toolbar>
+  <v-content>
+    <router-view/>
+  </v-content>
+    
   </v-app>
 </template>
 
 <script>
+import Rellax from 'rellax';
+
 
 export default {
   name: 'App',
@@ -84,6 +53,19 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  mounted: {
+    // Enable Parallax Scroll
+     init: function() {
+       return new Rellax('.rellax', {
+        speed: -2,
+        center: false,
+        wrapper: null,
+        round: true,
+        vertical: true,
+        horizontal: false
+      });
+    }
   }
 }
 </script>
@@ -91,14 +73,14 @@ export default {
 
 <style lang='scss'>
 
-.application--wrap {
+#bcb-app {
   /* background: -moz-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); /* ff3.6+ */
   /* background: -webkit-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); safari5.1+,chrome10+ */
   /* background: -o-radial-gradient(center, ellipse cover, #8C5EFF 0%, #000000 100%); opera 11.10+ */
   /* background: radial-gradient(ellipse at center, #8C5EFF 0%, #000000 100%); w3c */
 
   /* background: radial-gradient(ellipse at bottom, rgba(168,169,224,1) 0%,rgba(33,19,73,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  //background: linear-gradient(180deg, #5900BF 0%, #5900BF 1%, #EDE1F0 100%); /* w3c */
+  background: linear-gradient(180deg, rgb(14, 225, 240) 100%, rgb(217, 183, 255) 80%, rgb(248, 96, 85) 80%); /* w3c */
 
 
   .bcb-top {
@@ -115,7 +97,32 @@ export default {
   }
 
   .bcb-home__sub-headline {
-    font-family: "Nunito Sans" !important;
+    font-family: "Roboto" !important;
+    font-weight: 400 !important;
+  }
+
+  .bcb-icon {
+    svg {
+      transition: all 0.2s;
+    }
+
+    &:hover.bcb-icon--facebook {
+      svg {
+        color: aqua;
+      }
+    }
+
+    &:hover.bcb-icon--instagram {
+      svg {
+        color: orange;
+      }
+    }
+
+    &:hover.bcb-icon--youtube {
+      svg {
+        color: red;
+      }
+    }
   }
 
   .bcb-hero {
@@ -129,7 +136,8 @@ export default {
 
   .bcb-meeting__header {
     letter-spacing: 1px !important;
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
+    color: #FFFEFE;
   }
 
   .bcb-meeting__detials {
@@ -170,10 +178,26 @@ export default {
     height: 300px;
   }
 
+  .bcb-spacer__margin--large {
+    margin-bottom: 100px;
+  }
+
+  .bcb-spacer__margin--huge {
+    margin-bottom: 300px;
+  }
+
   .bcb-section {
     margin-bottom: 30px;
   }
 
+}
+
+@media screen and (min-width: 80rem) {
+  .application--wrap {
+    .bcb-container {
+      padding: 5% 0%;
+    }
+  }
 }
 
 </style>

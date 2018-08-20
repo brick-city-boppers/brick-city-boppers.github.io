@@ -1,6 +1,7 @@
 import '@babel/polyfill'
-import '@fortawesome/fontawesome-free/css/solid.css'
-import '@fortawesome/fontawesome-free/css/brands.css'
+import '@fortawesome/fontawesome-free/js/fontawesome.min'
+import '@fortawesome/fontawesome-free/js/solid.min'
+import '@fortawesome/fontawesome-free/js/brands.min'
 import Vue from 'vue'
 import {
   Vuetify, // required
@@ -16,7 +17,8 @@ import {
   VParallax,
   VDivider,
   VDialog,
-  VBtn
+  VBtn,
+  VToolbar
  } from 'vuetify'
  import {Ripple} from 'vuetify/es5/directives';
 import App from './App.vue'
@@ -61,7 +63,8 @@ Vue.use(Vuetify, {
     VParallax,
     VDivider,
     VDialog,
-    VBtn
+    VBtn,
+    VToolbar
   },
   directives: {
     Ripple

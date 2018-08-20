@@ -15,6 +15,7 @@
     "axios": "^0.18.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
+    "rellax": "^1.6.2",
     "vue": "^2.5.17",
     "vue-apollo": "^3.0.0-beta.19",
     "vue-resource": "^1.5.1",

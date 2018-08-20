@@ -1,7 +1,8 @@
 <template>
-    <v-layout column>
+    <section class="bcb-announcements__wrapper">
         <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Anoucements</v-flex>
         <v-list two-line class="py-0 bcb-announcements elevation-2">
+
             <template v-for="(announcement, index) in announcements">
                 
                 <v-list-tile
@@ -35,7 +36,7 @@
                 </v-layout>
             </template>
         </v-list>
-    </v-layout>
+    </section>
     
 </template>
 
@@ -55,7 +56,7 @@ export default {
             return announcement.updatedAt.substring(0, announcement.updatedAt.indexOf('T'));
           }
 
-          return 'No Date Available';
+          return '';
       }
   }
 }
@@ -64,11 +65,22 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 
+    .bcb-announcements__wrapper {
+        max-width: 100%;
+        z-index: 10;
+    }
+
     .bcb-announcements {
         position: relative;
         max-height: 270px;
+        max-width: 100%;
         overflow: auto;
-        z-index: 10;
+    }
+
+    @media screen and (min-width: 80rem) {
+        .bcb-announcements__wrapper {
+            max-width: 40%;
+        }
     }
 
    .application--wrap {

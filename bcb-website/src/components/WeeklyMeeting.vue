@@ -49,7 +49,7 @@ export default {
             return meeting.date.substring(0, meeting.date.indexOf('T'));
           }
 
-          return 'Date is unavailable';
+          return '';
       }
   }
 }
@@ -60,6 +60,13 @@ export default {
 
     #weekly-meeting {
         z-index: 10;
+        width: 100%;
+    }
+
+    @media screen and (min-width: 80rem) {
+        #weekly-meeting {
+            width: 40%;
+        }
     }
 
 </style>
