@@ -54,18 +54,16 @@ export default {
       title: 'Vuetify.js'
     }
   },
-  mounted: {
+  mounted: function () {
     // Enable Parallax Scroll
-     init: function() {
-       return new Rellax('.rellax', {
-        speed: -2,
-        center: false,
-        wrapper: null,
-        round: true,
-        vertical: true,
-        horizontal: false
-      });
-    }
+      new Rellax('.rellax', {
+      speed: -2,
+      center: false,
+      wrapper: null,
+      round: true,
+      vertical: true,
+      horizontal: false
+    });
   }
 }
 </script>

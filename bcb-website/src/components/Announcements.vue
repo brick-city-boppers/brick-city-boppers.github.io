@@ -1,15 +1,15 @@
 <template>
     <section class="bcb-announcements__wrapper">
         <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Anoucements</v-flex>
-        <v-list two-line class="py-0 bcb-announcements elevation-2">
+        <v-list two-line class="py-0 bcb-announcements elevation-5">
 
-            <template v-for="(announcement, index) in announcements">
+            <template v-if="announcementDialogs.length > 0" v-for="(announcement, index) in announcements">
                 
                 <v-list-tile
                     
                     :key="index"
                     ripple
-                    v-on:click="announcement.dialog = true"
+                    v-on:click="announcementDialogs[index].dialog = true"
                 >
                     <v-list-tile-content>
                         <span class="bcb-announcement__title-date">
@@ -23,13 +23,13 @@
                 <v-divider v-if="index + 1 < announcements.length" :key="`divider-${index}`"></v-divider>
 
                 <v-layout row justify-center` v-bind:key="`dialog-${index}`">
-                    <v-dialog v-model="announcement.dialog" max-width="290">
+                    <v-dialog v-model="announcementDialogs[index].dialog" max-width="290">
                     <v-card>
                         <v-card-title class="headline" v-html="announcement.title"></v-card-title>
                         <v-card-text  v-html="announcement.details"></v-card-text>
                         <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="green darken-1" flat @click.native="announcement.dialog = false">Close</v-btn>
+                        <v-btn color="green darken-1" flat @click.native="announcementDialogs[index].dialog = false">Close</v-btn>
                         </v-card-actions>
                     </v-card>
                     </v-dialog>
@@ -41,15 +41,27 @@
 </template>
 
 <script>
-
 export default {
-  name: 'Anoucements',
-  props: [
-    'announcements',
-    'msg',
-    'title'
-  ],
+  name: 'Announcement',
+  data: function() {
+    return {
+        announcementDialogs: this.initAnnouncementDialogs(),
+        dialog: false 
+    }
+  },
+  props: {
+    'announcements': {
+        default: []
+    },
+    'msg': String,
+    'title': String
+  },
   computed: {},
+//   watch: {
+//       annoucements: function(newVal) {
+//           this.announcementDialogs = this.initAnnouncementDialogs(newVal);
+//       }
+//   },
   methods: {
       getAnoucementDate(announcement) {
           if (announcement.updatedAt !== undefined) {
@@ -57,6 +69,14 @@ export default {
           }
 
           return '';
+      },
+      initAnnouncementDialogs() {
+          
+          let dialogs = [];
+          for(let a of this.announcements) {
+              dialogs.push({dialog: a === undefined});
+          }
+          return dialogs;
       }
   }
 }

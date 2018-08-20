@@ -1,8 +1,8 @@
 <template>
-    <section id="weekly-meeting">
-        <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1 ">Weekly Meeting</v-flex>
+    <section id="weekly-meeting" class="bcb-spacer__margin--large">
+        <v-flex href="#weekly-meeting" tag="h2" class="headline font-weight-medium bcb-meeting__header uppercase mb-1">Weekly Meeting</v-flex>
             <v-expansion-panel class="bcb-meeting__detials" v-for="(weeklyMeeting, index) in weeklyMeetings" :key='index'>
-            <v-expansion-panel-content>
+            <v-expansion-panel-content class="elevation-5">
                 <div slot="header">
                 <v-layout row wrap>
                     <v-flex xs4 tag="div" class="mb-0 bcb-title">Location</v-flex>
