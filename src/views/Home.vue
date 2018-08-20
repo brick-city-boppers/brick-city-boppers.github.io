@@ -16,44 +16,46 @@
             <img class="bcb-home__image-hero--4 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image"> 
           
             <v-flex class="bcb-home__footer">
-              <v-layout column align-center>
-                <v-flex class="bcb-spacer--med"></v-flex>
+                <v-flex class="bcb-spacer--med-plus"></v-flex>
 
-                <v-flex sm-10 md-3 lg-3>
-                  <v-form>
-                    <v-flex class="bcb-footer__sign-up"><span class="bcb-footer__sign-up--important">Sign up</span> for our weekly newsletter!</v-flex>
-                    <v-layout row>
-                      <v-text-field clearable="bcb-footer__sign-up-input"
-                        background-color="white"
-                        label="Sign Up with Email"
-                        solo
-                        v-validate="'required|email'"
-                        v-model="email"
-                      ></v-text-field>
+                <v-flex class="bcb-footer__sign-up-container">
+                  <v-flex class="bcb-footer__sign-up">
+                    <v-form>
+                      <v-flex class="bcb-footer__sign-up-title"><span class="bcb-footer__sign-up--important">Sign up</span> for our weekly newsletter!</v-flex>
+                      <v-layout row>
+                        <v-text-field clearable class="bcb-footer__sign-up-input"
+                          background-color="white"
+                          label="Sign up with Email"
+                          solo
+                          v-model="email"
+                          :rules="emailRules"
+                        ></v-text-field>
 
-                      <v-btn class="bcb-footer__sign-up-button">
-                        <v-icon>fas fa-arrow-right</v-icon>
-                      </v-btn>
-                    </v-layout>
-                    
-
-
-                    <v-flex class="bcb-footer__sign-up-field"></v-flex>
-                  </v-form>
+                        <v-btn class="bcb-footer__sign-up-button">
+                          <v-icon>fas fa-arrow-right</v-icon>
+                        </v-btn>
+                      </v-layout>
+                      <v-flex class="bcb-footer__sign-up-field"></v-flex>
+                    </v-form>
+                  </v-flex>
                 </v-flex>
 
                 <v-flex class="bcb-spacer--med"></v-flex>
-                
-                <v-flex class="bcb-header">Contact Us</v-flex>
-                <v-flex>
-                  <v-icon>fas fa-email</v-icon>
-                  <v-flex>bcbswing@gmail.com</v-flex>
+
+              <v-flex class="bcb-footer__contact-container">
+                <v-flex class="bcb-footer__contact">
+                  <v-flex class="bcb-header">Contact Us</v-flex>
+                  <v-layout row justify-space-between class="bcb-footer__contact-email" @click="copy">
+                    <v-icon small>fas fa-envelope</v-icon>
+                    <v-flex tag="div">bcbswing@gmail.com</v-flex>
+                  </v-layout>
+
+                  <v-layout row justify-space-between class="bcb-footer__contact-phone">
+                    <v-icon small>fas fa-phone-square</v-icon>
+                    <v-flex tag="div">TBA</v-flex>
+                  </v-layout>
                 </v-flex>
-                <v-flex>
-                  <v-icon>fas fa-phone</v-icon>
-                  <v-flex>?</v-flex>
-                </v-flex>
-              </v-layout>
+              </v-flex>
             </v-flex>
           </v-flex>
 
@@ -93,6 +95,8 @@ import Announcements from "@/components/Announcements";
 import WeeklyMeeting from "@/components/WeeklyMeeting";
 import heroImage from "@/assets/showcase/bcb(1).jpg";
 
+let Console = console;
+
 import $ from 'jquery';
 
 let homePageData = gql`{
@@ -127,7 +131,11 @@ export default {
         announcements: homePageData,
         weeklyMeetings: homePageData,
         homePageData: '',
-        email: ''
+        email: '',
+        emailRules: [
+          v => !!v || '',
+          v => /.+@.+/.test(v) || 'E-mail must be valid'
+        ],
       }
   },
   mounted() {
@@ -139,6 +147,15 @@ export default {
       $loadingKey: 'loading',
       announcements: homePageData,
       weeklyMeetings: homePageData
+  },
+  methods: {
+    copy: (event) => {
+      Console.log(event);
+      let a = $(event.target);
+      Console.log(a)
+      a.select();
+      document.execCommand('copy');
+    }
   }
 }
 </script>
@@ -172,11 +189,11 @@ export default {
 #bcb-app {
 
   .bcb-home__footer {
-    height: 355px;
+    height: 423px;
+    bottom: -70px;
     background-color: #272727;
     color: #FEFEFE;
     position: absolute;
-    bottom: 0;
     width: 100%;
 
     .bcb-footer__sign-up--important {
@@ -197,6 +214,96 @@ export default {
 
     .bcb-footer__sign-up-input {
       border-radius: 10px 0px 0px 10px;
+    }
+  }
+
+  .bcb-footer__sign-up-container {
+    display: block;
+
+    .bcb-footer__sign-up {
+      width: 50%;
+      margin: auto;
+
+      .bcb-footer__sign-up-title {
+        font-size: 18px !important;
+        width: 100%;
+        margin-bottom: 2px;
+      }
+    }
+  }
+
+  $email-icon-color: rgb(41, 146, 187);
+  $email-text-color: rgb(221, 221, 221);
+
+  $phone-icon-color: rgb(192, 99, 192);
+  $phone-text-color: rgb(221, 221, 221);
+
+  .bcb-footer__contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .bcb-footer__contact {
+      margin: auto;
+    }
+
+    .bcb-header {
+      margin-bottom: 5px;
+    }
+
+    .bcb-footer__contact-email {
+      svg {
+        color: $email-icon-color;
+        transition: color 0.15s;
+      }
+
+      div {
+        color: $email-text-color;
+        transition: color 0.15s;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        svg {
+          color: saturate($email-icon-color, 100%);
+        }
+
+        div {
+          color: lighten($email-text-color, 30%);
+        }
+      }
+    }
+
+    .bcb-footer__contact-phone {
+      svg {
+        color: $phone-icon-color;
+        transition: color 0.15s;
+      }
+
+      div {
+        color: $phone-text-color;
+        transition: color 0.15s;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        svg {
+          color: saturate($phone-icon-color, 30%);
+        }
+
+        div {
+          color: lighten($phone-text-color, 30%);
+        }
+      }
+    }
+
+    svg {
+      font-size: 16px;
+      margin-right: 12px;
+      height: 20px;
     }
   }
 }

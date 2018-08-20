@@ -26,6 +26,9 @@ import {
   VTextField
  } from 'vuetify'
  import {Ripple} from 'vuetify/es5/directives';
+
+import Vuelidate from 'vuelidate'
+
 import App from './App.vue'
 import router from './router'
 import * as VueGoogleMaps from "vue2-google-maps";
@@ -80,6 +83,7 @@ Vue.use(Vuetify, {
 
 // Apollo Setup
 Vue.use(VueApollo)
+Vue.use(Vuelidate)
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient

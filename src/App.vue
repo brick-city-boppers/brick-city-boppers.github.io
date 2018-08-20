@@ -251,6 +251,10 @@ $bcb-header-delay: 1s;
     height: 40px;
   }
 
+  .bcb-spacer--med-plus {
+    height: 80px;
+  }
+
   .bcb-spacer--large {
     height: 100px;
   }
