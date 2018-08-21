@@ -55,6 +55,14 @@
 
 import $ from 'jquery';
 
+import Email from 'Email';
+
+Email.send("abc@gmail.com",
+"dominic@ciciliostudio.com",
+"Testing 123 123 123",
+"ALL OF THE INFORMATION",
+{token: "3d421198-a065-4b05-8d8d-32270e237094"});
+
 export default {
   name: 'BCBFooter',
   data: function() {

@@ -10,10 +10,10 @@
 
 
             <!-- <v-parallax height="1000" class="bcb-home__image-hero--1 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1_VJgka1O4ohGmcDHpsa1a4KZSDEq87jh" alt="Hero Image"></v-parallax> -->
-            <img class="bcb-home__image-hero--2 bcb-home__image-hero rellax dark-overlay" src="https://drive.google.com/uc?export=view&id=1pywqlVkrOnxeuKrZtFG0o1OwJMbdSMEf" alt="Hero Image">
-            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image">
+            <img class="bcb-home__image-hero--2 bcb-home__image-hero dark-overlay" :class="{ rellax: !mobile}" src="https://drive.google.com/uc?export=view&id=1pywqlVkrOnxeuKrZtFG0o1OwJMbdSMEf" alt="Hero Image">
+            <img class="bcb-home__image-hero--3 bcb-home__image-hero" :class="{ rellax: !mobile}" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image">
             <!-- <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://hdqwalls.com/download/black-gradient-b9-1920x1080.jpg" alt="Hero Image"> -->
-            <img class="bcb-home__image-hero--4 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image"> 
+            <img class="bcb-home__image-hero--4 bcb-home__image-hero" :class="{ rellax: !mobile}" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image"> 
           
           <BCBFooter></BCBFooter>
             <!-- Footer Here -->
@@ -54,6 +54,8 @@ import Announcements from "@/components/Announcements";
 import WeeklyMeeting from "@/components/WeeklyMeeting";
 import BCBFooter from "@/components/BCBFooter";
 import heroImage from "@/assets/showcase/bcb(1).jpg";
+
+let Console = console;
 
 import $ from 'jquery';
 
@@ -96,6 +98,7 @@ export default {
           v => !!v || '',
           v => /.+@.+/.test(v) || 'E-mail must be valid'
         ],
+        mobile: this.isMobile()
       }
   },
   mounted() {
@@ -108,7 +111,17 @@ export default {
       announcements: homePageData,
       weeklyMeetings: homePageData
   },
-  methods: {}
+  methods: {
+    isMobile() {
+      if (window.innerWidth < 600) {
+        Console.log('mobile true');
+        return true;
+      }
+
+      Console.log('mobile false');
+      return false;
+    }
+  }
 }
 </script>
 
