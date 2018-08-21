@@ -85,6 +85,7 @@ export default {
         z-index: 10;
         opacity: 0;
         animation: fade-up 1s;
+        animation-delay: 1s;
         transform-origin: top;
         animation-fill-mode: forwards;
         animation-timing-function: ease;
