@@ -9,7 +9,7 @@
                 <v-layout row>
                 <v-text-field clearable class="bcb-footer__sign-up-input"
                     background-color="white"
-                    label="Sign up with Email"
+                    label="Available Soon"
                     solo
                     v-model="email"
                     :rules="emailRules"
@@ -105,8 +105,8 @@ export default {
 
     #bcb-app {
         .bcb-home__footer {
-            height: 423px;
-            bottom: -70px;
+            height: 400px;
+            bottom: -229px;
             background-color: #272727;
             color: #FEFEFE;
             position: absolute;
@@ -117,19 +117,19 @@ export default {
             }
 
             .bcb-footer__sign-up-button {
-            background-color: orange;
-            color: #FEFEFE;
-            position: relative;
-            margin: 0 !important;
-            /* display: block; */
-            /* padding: 13px 5px; */
-            height: 48px;
-            border-radius: 0 10px 10px 0px;
-            left: -2px;
+                background-color: orange;
+                color: #FEFEFE;
+                position: relative;
+                margin: 0 !important;
+                /* display: block; */
+                /* padding: 13px 5px; */
+                height: 48px;
+                border-radius: 0 10px 10px 0px;
+                left: -2px;
             }
 
             .bcb-footer__sign-up-input {
-            border-radius: 10px 0px 0px 10px;
+                border-radius: 10px 0px 0px 10px;
             }
         }
 
@@ -221,6 +221,26 @@ export default {
             margin-right: 12px;
             height: 20px;
             }
+        }
+    }
+
+    @media screen and (min-width: 20rem) {
+        #bcb-app {
+            .bcb-home__footer { 
+                .bcb-footer__sign-up {
+                    width: 90%;
+                }
+            } 
+        }
+    }
+
+    @media screen and (min-width: 40rem) {
+        #bcb-app {
+            .bcb-home__footer { 
+                .bcb-footer__sign-up {
+                    width: 50%;
+                }
+            } 
         }
     }
 

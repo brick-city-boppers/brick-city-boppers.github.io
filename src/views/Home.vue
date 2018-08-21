@@ -11,8 +11,8 @@
 
             <!-- <v-parallax height="1000" class="bcb-home__image-hero--1 bcb-home__image-hero" src="https://drive.google.com/uc?export=view&id=1_VJgka1O4ohGmcDHpsa1a4KZSDEq87jh" alt="Hero Image"></v-parallax> -->
             <img class="bcb-home__image-hero--2 bcb-home__image-hero rellax dark-overlay" src="https://drive.google.com/uc?export=view&id=1pywqlVkrOnxeuKrZtFG0o1OwJMbdSMEf" alt="Hero Image">
-            <!-- <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image"> -->
-            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://hdqwalls.com/download/black-gradient-b9-1920x1080.jpg" alt="Hero Image">
+            <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=13vhtXqlXfMp30r9XDwvysF1XM7kreXiH" alt="Hero Image">
+            <!-- <img class="bcb-home__image-hero--3 bcb-home__image-hero rellax" src="https://hdqwalls.com/download/black-gradient-b9-1920x1080.jpg" alt="Hero Image"> -->
             <img class="bcb-home__image-hero--4 bcb-home__image-hero rellax" src="https://drive.google.com/uc?export=view&id=1RhTYXz-aH2lxFtDzgJuk1dK0i6M-Oh8t" alt="Hero Image"> 
           
           <BCBFooter></BCBFooter>

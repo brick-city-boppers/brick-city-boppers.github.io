@@ -74,7 +74,8 @@ export default {
     #weekly-meeting {
         z-index: 10;
         width: 100%;
-        animation: accordian-open 1s;
+        opacity: 0;
+        animation: fade-up 1s;
         transform-origin: top;
         animation-delay: 1s;
         animation-fill-mode: forwards;

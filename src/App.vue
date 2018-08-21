@@ -2,15 +2,15 @@
   <v-app id="bcb-app">
     <v-toolbar dark color="#5B3A8B">
 
-    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
+    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item" href="#">
       <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-home</v-icon>Home</v-flex>
     </v-btn>
 
-    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
+    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item" disabled>
       <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-image</v-icon>Gallery</v-flex>
     </v-btn>
 
-    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item">
+    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item" disabled>
       <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-atlas</v-icon>The Club</v-flex>
     </v-btn>
 
@@ -118,6 +118,18 @@ export default {
         .bcb-meeting__header {
           transform: rotateX(0deg);
         }
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) ;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

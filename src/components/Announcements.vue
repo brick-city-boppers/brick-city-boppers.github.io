@@ -83,6 +83,11 @@ export default {
     .bcb-announcements__wrapper {
         max-width: 100%;
         z-index: 10;
+        opacity: 0;
+        animation: fade-up 1s;
+        transform-origin: top;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
     }
 
     .bcb-announcements {
