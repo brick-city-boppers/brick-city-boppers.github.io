@@ -124,7 +124,7 @@ export default {
                 /* display: block; */
                 /* padding: 13px 5px; */
                 height: 48px;
-                border-radius: 0 10px 10px 0px;
+                border-radius: 0 5px 5px 0px;
                 left: -2px;
             }
 
