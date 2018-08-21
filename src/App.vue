@@ -1,16 +1,102 @@
 <template>
   <v-app id="bcb-app">
+
+    <!-- Mobile -->
+    <v-navigation-drawer 
+      clipped 
+      app
+      :disable-resize-watcher="true"
+      v-model="primaryDrawer.model"
+      :permanent="primaryDrawer.type === 'permanent'"
+      :temporary="primaryDrawer.type === 'temporary'"
+      class="bcb-mobile-nav application theme--dark">
+
+      <v-divider></v-divider>
+
+      <v-list class="pt-0">
+        
+        <v-btn flat class="hidden-sm-and-down fill-height my-0 mx-0 bcb-nav__item" href="#">
+          <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-home</v-icon>Home</v-flex>
+        </v-btn>
+
+          <v-list-tile
+            ripple
+            class="bcb-mobile-nav__tile"
+            @click="true"
+          >
+            <v-list-tile-action>
+              <v-icon small>fas fa-home</v-icon>
+            </v-list-tile-action>
+
+            <v-list-tile-content>
+              <v-list-tile-title>Home</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile
+            ripple
+            disabled
+            class="bcb-mobile-nav__tile"
+            @click="true"
+          >
+            <v-list-tile-action>
+              <v-icon small>fas fas fa-image</v-icon>
+            </v-list-tile-action>
+
+            <v-list-tile-content>
+              <v-list-tile-title>Gallery</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile
+            ripple
+            disabled
+            class="bcb-mobile-nav__tile"
+            @click="true"
+          >
+            <v-list-tile-action>
+              <v-icon small>fas fa-atlas</v-icon>
+            </v-list-tile-action>
+
+            <v-list-tile-content>
+              <v-list-tile-title>The Club</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+
+
+        <v-btn flat class="hidden-sm-and-down fill-height my-0 mx-0 bcb-nav__item" disabled>
+          <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-image</v-icon>Gallery</v-flex>
+        </v-btn>
+
+        <v-btn flat class="hidden-sm-and-down fill-height my-0 mx-0 bcb-nav__item" disabled>
+          <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-atlas</v-icon>The Club</v-flex>
+        </v-btn>
+
+
+
+      </v-list>
+    </v-navigation-drawer>
+
     <v-toolbar dark color="#5B3A8B">
 
-    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item" href="#">
+      
+
+    <v-toolbar-side-icon class="hidden-md-and-up" @click.stop="primaryDrawer.model = !primaryDrawer.model"
+                          ></v-toolbar-side-icon>
+
+
+    <!-- Desktop -->
+
+    <v-btn flat class="hidden-sm-and-down fill-height my-0 mx-0 bcb-nav__item" href="#">
       <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-home</v-icon>Home</v-flex>
     </v-btn>
 
-    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item" disabled>
+    <v-btn flat class="hidden-sm-and-down fill-height my-0 mx-0 bcb-nav__item" disabled>
       <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-image</v-icon>Gallery</v-flex>
     </v-btn>
 
-    <v-btn flat class="fill-height my-0 mx-0 bcb-nav__item" disabled>
+    <v-btn flat class="hidden-sm-and-down fill-height my-0 mx-0 bcb-nav__item" disabled>
       <v-flex class="bcb-nav__item-content"><v-icon small class="mr-2">fas fa-atlas</v-icon>The Club</v-flex>
     </v-btn>
 
@@ -55,7 +141,11 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
+      primaryDrawer: {
+        model: false,
+        type: 'persistent'
+      }
     }
   },
   mounted: function () {
@@ -151,6 +241,23 @@ $bcb-header-delay: 1s;
     border-radius: 10px;
   }
 
+  .bcb-mobile-nav {
+    z-index: 50;
+    top: 56px;
+
+    .bcb-mobile-nav__tile {
+      
+    }
+  }
+
+  .v-overlay {
+    z-index: 40;
+  }
+
+  .v-toolbar {
+    z-index: 60;
+  }
+
   .bcb-top {
     margin-top: 70px;
   }
@@ -181,6 +288,28 @@ $bcb-header-delay: 1s;
     animation-delay: 2s;
     animation-fill-mode: forwards;
     animation-timing-function: ease;
+  }
+
+  .bcb-mobile-nav__tile {
+    &:hover {
+        svg {
+          color: violet;
+        }
+        
+        .v-list__tile__title {
+          color: violet;
+        }
+    }
+
+    &:focus {
+        svg {
+          color: violet;
+        }
+        
+        .v-list__tile__title {
+          color: violet;
+        }
+    }
   }
 
   
