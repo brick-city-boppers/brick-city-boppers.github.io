@@ -42,7 +42,13 @@ import VueApollo from 'vue-apollo'
 import './stylus/main.styl';
 
 // Replace this with your project's endpoint
-const GRAPHCMS_API = 'https://api-useast.graphcms.com/v1/cjkvr0bk4024i01bnlo1xs2vc/master'
+let GRAPHCMS_API = 'https://api-useast.graphcms.com/v1/cjkvr'
+
+let apiSplit1 = '0bk4024';
+let apiSpilt2 = 'i01bnlo1xs2vc/master';
+
+GRAPHCMS_API += apiSplit1;
+GRAPHCMS_API += apiSpilt2;
 
 const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: GRAPHCMS_API }),

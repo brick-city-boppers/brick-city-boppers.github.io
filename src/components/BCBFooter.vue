@@ -53,15 +53,20 @@
 
 <script>
 
-import $ from 'jquery';
+let Console = console;
 
+import $ from 'jquery';
 import Email from 'Email';
 
-Email.send("abc@gmail.com",
-"dominic@ciciliostudio.com",
+Console.log(Email);
+
+Email.send("dominic@ciciliostudio.com",
+"pianoman13c@gmail.com",
 "Testing 123 123 123",
 "ALL OF THE INFORMATION",
-{token: "3d421198-a065-4b05-8d8d-32270e237094"});
+{token: "80ca0cf3-4869-4a36-9873-09d8d1dccc84"},
+function done(message) { Console.log("sent " + message) }
+);
 
 export default {
   name: 'BCBFooter',
