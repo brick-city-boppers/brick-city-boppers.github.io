@@ -37,7 +37,7 @@
           </v-layout>
         </v-layout>
 
-        <!-- <div id='calendar'></div> -->
+        <div id='calendar'></div>
 
 
       </v-layout>
@@ -103,7 +103,10 @@ export default {
   },
   mounted() {
     $('#calendar').fullCalendar({
-    // put your options and callbacks here
+      events: {
+        googleCalendarApiKey: 'AIzaSyDehMSK26ta9egRINKCrCi-8OOEWqm3lmQ',
+        googleCalendarId: 'itgf1uotqhcrvtut5gfru989ik@group.calendar.google.com',
+      }
     })
   },
   apollo: {
@@ -132,6 +135,15 @@ export default {
 #calendar {
   position: relative;
   z-index: 10;
+
+  .fc-view-container {
+    background-color: white;
+    box-shadow: 3px 3px 15px 5px rgba(76,76,76,0.75);
+  }
+
+  .fc-header-toolbar {
+    color: #FEFEFE;
+  }
 }
 
 .dark-overlay {

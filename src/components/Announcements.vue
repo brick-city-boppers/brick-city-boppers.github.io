@@ -3,9 +3,9 @@
         <v-flex href="#announcements" tag="h2" class="headline font-weight-medium bcb-header uppercase mb-1 ">Anoucements</v-flex>
         <v-list two-line class="py-0 bcb-announcements elevation-5">
 
-            <template  v-for="(announcement, index) in announcements">
+            <template v-for="(announcement, index) in announcements">
                 
-                <v-list-tile
+                <v-list-tile v-show="announcementDialogs[index] !== undefined"
                     
                     :key="index"
                     ripple

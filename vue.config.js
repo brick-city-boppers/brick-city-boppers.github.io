@@ -5,7 +5,8 @@ module.exports = {
     configureWebpack: {
       devtool: 'source-map',
       externals: {
-        Email: 'Email'
+        Email: 'Email',
+        Moment: 'Moment'
       }
     }
   }
