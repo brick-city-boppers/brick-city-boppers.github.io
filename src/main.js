@@ -51,7 +51,12 @@ GRAPHCMS_API += apiSplit1;
 GRAPHCMS_API += apiSpilt2;
 
 const apolloClient = new ApolloClient({
-  link: new HttpLink({ uri: GRAPHCMS_API }),
+  link: new HttpLink({ 
+    uri: GRAPHCMS_API,
+    headers: {
+      authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJzaW9uIjoxLCJ0b2tlbklkIjoiZTYwZGZjMjAtOGUwNy00NWI1LTljMzUtMGRiYTY2MTIzOTc0In0.hM2oXp-ekfnDfVkno6kqdLqN3CNmy2YrTdiUPS0ROc0'
+    }
+   }),
   cache: new InMemoryCache()
 });
 
