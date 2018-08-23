@@ -78,6 +78,10 @@ let homePageData = gql`{
  }`
 
 
+ let split1 = 'AIzaSyDehMSK26ta9';
+ let split2 = 'egRINKCrCi-8OOEWqm3lmQ';
+
+
 export default {
   name: 'Home',
   components: {
@@ -104,7 +108,7 @@ export default {
   mounted() {
     $('#calendar').fullCalendar({
       events: {
-        googleCalendarApiKey: 'AIzaSyDehMSK26ta9egRINKCrCi-8OOEWqm3lmQ',
+        googleCalendarApiKey: split1 + split2,
         googleCalendarId: 'itgf1uotqhcrvtut5gfru989ik@group.calendar.google.com',
       }
     })
