@@ -1,6 +1,6 @@
 <template>
     <section class="bcb-announcements__wrapper bcb-spacer__margin--large">
-        <v-flex href="#announcements" tag="h2" class="headline font-weight-medium bcb-header uppercase mb-1 ">Anoucements</v-flex>
+        <v-flex href="#announcements" tag="h2" class="headline font-weight-medium bcb-header uppercase mb-1 ">Announcements</v-flex>
         <v-list two-line class="py-0 bcb-announcements elevation-5">
 
             <template v-for="(announcement, index) in announcements">
